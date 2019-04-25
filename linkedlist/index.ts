@@ -1,11 +1,13 @@
-interface INode<T> {
+export interface INode<T> {
   value: T;
   next?: INode<T>;
 }
 
+export type ILinkedList<T> = Array<INode<T>>;
+
 export class LinkedList<T> {
-  private head: INode<T> = null;
-  private tail: INode<T> = null;
+  public head: INode<T> = null;
+  public tail: INode<T> = null;
   private EMPTY_NODE: INode<T> = { value: null, next: null };
 
   private node(value: T): INode<T> {
@@ -109,7 +111,3 @@ export class LinkedList<T> {
     console.log(list.join("->"));
   }
 }
-
-const list = new LinkedList<number>();
-list.fromArray([1, 2, 3, 4, 5, 6]);
-list.print();
